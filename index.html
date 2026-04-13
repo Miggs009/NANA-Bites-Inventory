@@ -50,22 +50,35 @@
     <div id="sales" class="tab hidden">
       <h1 class="text-2xl font-bold mb-4">Sales</h1>
 
-      <div class="flex gap-2 flex-col md:flex-row">
+      <div class="flex flex-col md:flex-row gap-2 mb-4">
         <select id="productSelect" class="border p-2 w-full"></select>
         <input id="saleQty" type="number" placeholder="Qty" class="border p-2 w-full"/>
-        <button onclick="addSale()" class="bg-green-500 text-white px-4 py-2 rounded">
-          Add Sale
+        <button onclick="addOrUpdateSale()" class="bg-green-500 text-white px-4 py-2 rounded">
+          Save
         </button>
       </div>
 
-      <ul id="salesList" class="mt-4"></ul>
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white rounded shadow">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="p-3">Product</th>
+              <th class="p-3">Qty</th>
+              <th class="p-3">Total</th>
+              <th class="p-3">Cost</th>
+              <th class="p-3">Profit</th>
+              <th class="p-3">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="salesList"></tbody>
+        </table>
+      </div>
     </div>
 
     <!-- PRODUCTS -->
     <div id="products" class="tab hidden">
       <h1 class="text-2xl font-bold mb-4">Products</h1>
 
-      <!-- ADD PRODUCT -->
       <div class="flex flex-col md:flex-row gap-2 mb-4">
         <input id="productName" placeholder="Name" class="border p-2 w-full"/>
         <input id="productPrice" type="number" placeholder="Selling Price" class="border p-2 w-full"/>
@@ -76,47 +89,38 @@
         <button onclick="updateProduct()" class="bg-yellow-500 text-white px-4 py-2 rounded w-full">Update</button>
       </div>
 
-      <!-- PRODUCT TABLE -->
       <table class="min-w-full bg-white rounded shadow">
         <thead class="bg-gray-200">
           <tr>
-            <th class="p-2">Name</th>
-            <th class="p-2">Price</th>
-            <th class="p-2">Cost</th>
-            <th class="p-2">Profit</th>
-            <th class="p-2">Actions</th>
+            <th class="p-3">Name</th>
+            <th class="p-3">Price</th>
+            <th class="p-3">Cost</th>
+            <th class="p-3">Profit</th>
+            <th class="p-3">Actions</th>
           </tr>
         </thead>
         <tbody id="productList"></tbody>
       </table>
 
-      <!-- PRODUCT DETAILS -->
+      <!-- INGREDIENTS -->
       <div id="productDetails" class="hidden mt-6">
         <h2 id="productTitle" class="text-xl font-bold mb-2"></h2>
-
-        <h3 class="font-semibold">Ingredients</h3>
 
         <div class="flex gap-2 mb-2">
           <input id="ingredientName" placeholder="Ingredient" class="border p-2 w-full"/>
           <input id="ingredientCost" type="number" placeholder="Cost" class="border p-2 w-full"/>
-          <button onclick="addIngredient()" class="bg-blue-500 text-white px-4 rounded">Add</button>
+          <button id="ingredientBtn" onclick="addIngredient()" class="bg-blue-500 text-white px-4 rounded">
+            Add
+          </button>
         </div>
 
         <table class="min-w-full bg-white">
-          <thead class="bg-gray-200">
-            <tr>
-              <th class="p-2">Name</th>
-              <th class="p-2">Cost</th>
-              <th class="p-2">Action</th>
-            </tr>
-          </thead>
           <tbody id="ingredientList"></tbody>
         </table>
 
         <div class="mt-4 font-bold">
-          Total Cost: ₱<span id="totalCostView">0</span>
+          Cost: ₱<span id="totalCostView">0</span>
         </div>
-
         <div class="font-bold">
           Profit: ₱<span id="profitView">0</span>
         </div>
