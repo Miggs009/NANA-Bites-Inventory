@@ -99,7 +99,7 @@ async function loadProductList() {
         <td class="p-2">₱${cost}</td>
         <td class="p-2">₱${profit}</td>
         <td class="p-2 space-x-2">
-          <button onclick="selectProduct('${p.id}','${p.name}',${p.price})" class="bg-green-500 text-white px-2 py-1 rounded">View Ingredients</button>
+          <button onclick="selectProduct('${p.id}','${p.name}',${p.price})" class="bg-green-500 text-white px-2 py-1 rounded">View Ingredients and Expenses</button>
           <button onclick="editProduct('${p.id}','${p.name}',${p.price})" class="bg-blue-500 text-white px-2 py-1 rounded">Edit</button>
           <button onclick="deleteProduct('${p.id}')" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
         </td>
