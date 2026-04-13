@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nana Bites POS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <div class="w-64 bg-gray-800 text-white p-4 space-y-3">
+    <h1 class="text-lg font-bold mb-4">NANA BITES</h1>
+
+    <button onclick="showTab('dashboard')" class="w-full p-2 hover:bg-gray-700">Dashboard</button>
+    <button onclick="showTab('sales')" class="w-full p-2 hover:bg-gray-700">Sales</button>
+    <button onclick="showTab('products')" class="w-full p-2 hover:bg-gray-700">Products</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="flex-1 p-6 overflow-auto">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="tab">
+      <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white p-4 rounded shadow">
+          <p>Total Sales</p>
+          <h2 id="totalSales">0</h2>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <p>Total Cost</p>
+          <h2 id="totalCost">0</h2>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <p>Profit</p>
+          <h2 id="totalProfit">0</h2>
+        </div>
+      </div>
+
+      <canvas id="salesChart"></canvas>
+    </div>
+
+    <!-- SALES -->
+    <div id="sales" class="tab hidden">
+      <h1 class="text-2xl font-bold mb-4">Sales</h1>
+
+      <div class="flex gap-2 flex-col md:flex-row">
+        <select id="productSelect" class="border p-2 w-full"></select>
+        <input id="saleQty" type="number" placeholder="Qty" class="border p-2 w-full"/>
+        <button onclick="addSale()" class="bg-green-500 text-white px-4 py-2 rounded">
+          Add Sale
+        </button>
+      </div>
+
+      <ul id="salesList" class="mt-4"></ul>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="products" class="tab hidden">
+      <h1 class="text-2xl font-bold mb-4">Products</h1>
+
+      <!-- ADD PRODUCT -->
+      <div class="flex flex-col md:flex-row gap-2 mb-4">
+        <input id="productName" placeholder="Name" class="border p-2 w-full"/>
+        <input id="productPrice" type="number" placeholder="Selling Price" class="border p-2 w-full"/>
+      </div>
+
+      <div class="flex gap-2 mb-4">
+        <button onclick="addProduct()" class="bg-purple-500 text-white px-4 py-2 rounded w-full">Add</button>
+        <button onclick="updateProduct()" class="bg-yellow-500 text-white px-4 py-2 rounded w-full">Update</button>
+      </div>
+
+      <!-- PRODUCT TABLE -->
+      <table class="min-w-full bg-white rounded shadow">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="p-2">Name</th>
+            <th class="p-2">Price</th>
+            <th class="p-2">Cost</th>
+            <th class="p-2">Profit</th>
+            <th class="p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productList"></tbody>
+      </table>
+
+      <!-- PRODUCT DETAILS -->
+      <div id="productDetails" class="hidden mt-6">
+        <h2 id="productTitle" class="text-xl font-bold mb-2"></h2>
+
+        <h3 class="font-semibold">Ingredients</h3>
+
+        <div class="flex gap-2 mb-2">
+          <input id="ingredientName" placeholder="Ingredient" class="border p-2 w-full"/>
+          <input id="ingredientCost" type="number" placeholder="Cost" class="border p-2 w-full"/>
+          <button onclick="addIngredient()" class="bg-blue-500 text-white px-4 rounded">Add</button>
+        </div>
+
+        <table class="min-w-full bg-white">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="p-2">Name</th>
+              <th class="p-2">Cost</th>
+              <th class="p-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="ingredientList"></tbody>
+        </table>
+
+        <div class="mt-4 font-bold">
+          Total Cost: ₱<span id="totalCostView">0</span>
+        </div>
+
+        <div class="font-bold">
+          Profit: ₱<span id="profitView">0</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
