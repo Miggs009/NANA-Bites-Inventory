@@ -109,7 +109,7 @@ async function loadProductList(){
         <td class="p-3">₱${cost}</td>
         <td class="p-3 text-blue-600 font-bold">₱${profit}</td>
         <td class="p-3 space-x-2">
-          <button onclick="selectProduct('${p.id}','${p.name}',${p.price})" class="bg-green-500 px-2 text-white rounded">View</button>
+          <button onclick="selectProduct('${p.id}','${p.name}',${p.price})" class="bg-green-500 px-2 text-white rounded">View IIngredients & Expenses/button>
           <button onclick="editProduct('${p.id}','${p.name}',${p.price})" class="bg-blue-500 px-2 text-white rounded">Edit</button>
           <button onclick="deleteProduct('${p.id}')" class="bg-red-500 px-2 text-white rounded">Delete</button>
         </td>
